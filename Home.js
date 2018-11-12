@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Button, AlertIOS } from "react-native";
 import moment from "moment";
+import Challenge from "./Challenge";
 
 function Timer({ interval }) {
 	const duration = moment.duration(interval);
@@ -11,17 +12,14 @@ function Timer({ interval }) {
 		</Text>
 	);
 }
-function RoundButton({ title, color, background, onPress }) {
+
+function Challange({ name }) {
 	return (
-		<View style={{ backgroundColor: background, height: 200, width: 200 }}>
-			<Text style={{ color }}>{title}</Text>
+		<View>
+			<Timer interval={timer} />
+			<Button title={name} color="#A1EDCE" onPress={this.start} />
 		</View>
 	);
-}
-
-
-function Challange({name}) {
-	
 }
 
 export default class Home extends React.Component {
@@ -31,38 +29,30 @@ export default class Home extends React.Component {
 
 		this.state = {
 			start: 0,
-			now: 0,
-		}
+			now: 0
+		};
 	}
 
 	start = () => {
-
-		const now = new Date().getTime()
+		const now = new Date().getTime();
 		this.setState({
 			start: now,
 			now
-		})
+		});
 		this.timer = setInterval(() => {
-			this.setState({ now: new Date().getTime()})
-			}, 100)
-		}
+			this.setState({ now: new Date().getTime() });
+		}, 100);
+	};
 	addNewChallange = () => {
 		AlertIOS.prompt("Hello Fam", null, text => console.log("yo: " + text));
-	}
-	
+	};
 
 	render() {
-
 		const { now, start } = this.state;
 		const timer = now - start;
 		return (
 			<View style={styles.container}>
-				<Timer interval={timer} />
-				<Button
-					title="start"
-					color="#A1EDCE"
-					onPress={this.start}
-				/>
+				<Challange name="Charlie's Fishbowls" />
 				<Button
 					title="Add New Challange"
 					color="#A1EDCE"
