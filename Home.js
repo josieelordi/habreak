@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, AlertIOS } from "react-native";
 import moment from "moment";
 
 function Timer({ interval }) {
@@ -17,6 +17,11 @@ function RoundButton({ title, color, background, onPress }) {
 			<Text style={{ color }}>{title}</Text>
 		</View>
 	);
+}
+
+
+function Challange({name}) {
+	
 }
 
 export default class Home extends React.Component {
@@ -41,6 +46,9 @@ export default class Home extends React.Component {
 			this.setState({ now: new Date().getTime()})
 			}, 100)
 		}
+	addNewChallange = () => {
+		AlertIOS.prompt("Hello Fam", null, text => console.log("yo: " + text));
+	}
 	
 
 	render() {
@@ -54,6 +62,11 @@ export default class Home extends React.Component {
 					title="start"
 					color="#A1EDCE"
 					onPress={this.start}
+				/>
+				<Button
+					title="Add New Challange"
+					color="#A1EDCE"
+					onPress={this.addNewChallange}
 				/>
 			</View>
 		);
