@@ -1,25 +1,34 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { createStackNavigator } from "react-navigation";
+import Home from "./Home.js";
+import Welcome from "./Welcome.js";
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Welcome to Habreak</Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#07263B',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-    text: {
-      color: '#fff',
-      fontSize: 35
-    },
+const App = createStackNavigator({
+	Welcome: { screen: Welcome },
+	Home: { screen: Home }
 });
+
+export default App;
+
+const RootStack = createStackNavigator(
+	{
+		Welcome: Welcome,
+		Home: Home
+	},
+	{
+		initialRouteName: "Welcome",
+		/* The header config from HomeScreen is now here */
+		navigationOptions: {
+			headerStyle: {
+				backgroundColor: "#07263B"
+			},
+			headerTitleStyle: {
+				fontWeight: "bold",
+				color: "#ffffff",
+				fontSize: 30
+			},
+			headerTransparent: true
+		}
+	}
+);
