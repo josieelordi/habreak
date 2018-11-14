@@ -10,28 +10,37 @@ export default class Home extends React.Component {
 		super(props);
 
 		this.state = {
-			numChallanges: 0,
+			chalNames : [],
+			numChal: 0
 		};
 	}
+	loadNewName = (name) => {
+		this.state.chalNames.push(name);
+		this.state.numChal = this.state.numChal + 1;
+		console.log(this.state.chalNames);
+		this.forceUpdate();
+	};
 
 	addNewChallange = () => {
-		let name;
-		AlertIOS.prompt("Hello Fam", null, text => name = text);
-
-		this.state.numChallanges = this.state.numChallanges + 1;
+		AlertIOS.prompt("Hello Fam", null, text => 
+			this.loadNewName(text));
 	};
+
 
 	render() {
 		const { now, start } = this.state;
 		const timer = now - start;
+		//console.log(this.state.chalNames);
 		return (
 			<View style={styles.container}>
-				<Challenge name="Charlie's Fishbowls" />
-				<Challenge name="Ricks Mind Probe" />
+				{this.state.chalNames.map((chalName) => {
+					return (<Challenge name= {chalName} />)
+				})}
 				<Button
 					title="Add New Challange"
 					color="#A1EDCE"
 					onPress={this.addNewChallange}
+					style = {styles.button}
 				/>
 			</View>
 		);
@@ -52,5 +61,10 @@ const styles = StyleSheet.create({
 	timer: {
 		color: "#ffffff",
 		fontSize: 40
+	},
+	button: {
+        flex: 10,
+        flexDirection: 'column',
+        justifyContent: 'center',
 	}
 });

@@ -25,6 +25,9 @@ export default class Challenge extends React.Component {
 	}
 
 	start = () => {
+		AlertIOS.alert(
+ 'Need to reset your clock? That’s okay. You made it pretty far and we know you can do it again!'
+);
 		const now = new Date().getTime();
 		this.setState({
 			start: now,
