@@ -33,15 +33,15 @@ export default class Home extends React.Component {
 		//console.log(this.state.chalNames);
 		return (
 			<View style={styles.container}>
-				{this.state.chalNames.map((chalName) => {
-					return (<Challenge name= {chalName} />)
-				})}
 				<Button
 					title="Add New Challange"
 					color="#A1EDCE"
 					onPress={this.addNewChallange}
 					style = {styles.button}
 				/>
+				{this.state.chalNames.map((chalName) => {
+					return (<Challenge name= {chalName} />)
+				})}
 			</View>
 		);
 	}

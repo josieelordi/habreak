@@ -14,38 +14,50 @@ function Timer({ interval }) {
 
 export default class Challenge extends React.Component {
 
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			start: 0,
-			now: 0,
-			name : props.name
-		};
-	}
-
 	start = () => {
-		AlertIOS.alert(
- 'Need to reset your clock? That’s okay. You made it pretty far and we know you can do it again!'
-);
+		
 		const now = new Date().getTime();
 		this.setState({
 			start: now,
-			now
+			now,
 		});
 		this.timer = setInterval(() => {
 			this.setState({ now: new Date().getTime() });
 		}, 100);
 	};
 
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			start: 0,
+			now: 0,
+			name : props.name,
+			count: 0
+		};
+	}
+
+buttonClicked = () => {
+
+	if (this.state.count != 0) {
+		AlertIOS.alert(
+ 'That’s okay. You made it pretty far and we know you can do it again!');
+	}
+	this.start()
+	this.state.count = this.state.count + 1;
+}
 	render() {
 		const { now, start } = this.state;
 		const timer = now - start;
-		return (
+		let text = "";
+		if (timer == 0) {
+			text = "Start"
+		} else text = "Reset"
+		return ( 
 			<View style={styles.container}>
 				<Text style={styles.text}>{this.state.name}</Text>
 				<Timer interval={timer} />
-				<Button title="reset" color="#A1EDCE" onPress={this.start} />
+				<Button title={text} color="#A1EDCE" onPress={this.buttonClicked} />
 			</View>
 		);
 	}
