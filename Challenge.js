@@ -5,10 +5,14 @@ import moment from "moment";
 function Timer({ interval }) {
 	const duration = moment.duration(interval);
 	return (
-		<Text style={styles.timer}>
-			{duration.days()} days, {duration.minutes()} minutes,{" "}
-			{duration.seconds()} seconds{" "}
-		</Text>
+		<View style={styles.timerContainer}>
+			<Text style={styles.timerDay}>
+				{duration.days()} days
+			</Text>
+			<Text style={styles.timerMinSec}>
+				{duration.minutes()} min,{" "}{duration.seconds()} sec{" "}
+			</Text>
+		</View>
 	);
 }
 
@@ -55,9 +59,13 @@ buttonClicked = () => {
 		} else text = "Reset"
 		return ( 
 			<View style={styles.container}>
-				<Text style={styles.text}>{this.state.name}</Text>
-				<Timer interval={timer} />
-				<Button title={text} color="#A1EDCE" onPress={this.buttonClicked} />
+				<View style={styles.nameContainer}>
+					<Text style={styles.text}>{this.state.name}</Text>
+				</View>
+					<Timer interval={timer} />
+				<View style={styles.button_container}>
+				<Button title={text} color="#ffffff" onPress={this.buttonClicked} style={styles.button} />
+				</View>
 			</View>
 		);
 	}
@@ -65,17 +73,51 @@ buttonClicked = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
+		flex: 2,
 		backgroundColor: "#07263B",
 		alignItems: "center",
-		justifyContent: "center"
+		justifyContent: "center",
+		height: 10
+	},
+	nameContainer:{
+		borderTopLeftRadius: 7,
+		borderTopRightRadius: 7,
+		width: 325,
+		backgroundColor: '#DA5D5D',
+	},
+	timerContainer: {
+		justifyContent: "center",
+		alignItems: "center",
+		backgroundColor: '#0B3049', 
+		width: 325,
+		borderBottomRightRadius: 7,
+		borderBottomLeftRadius: 7
 	},
 	text: {
-		color: "#A1EDCE",
-		fontSize: 35
-	},
-	timer: {
+		justifyContent: "center",
+		alignItems: "center",
+		marginLeft: 10,
 		color: "#ffffff",
-		fontSize: 40
+		fontSize: 35,
+	},
+	timerDay: {
+		paddingTop: 10,
+		paddingBottom: 5,
+		color: "#ffffff",
+		fontSize: 48,
+   		backgroundColor: '#0B3049'
+	},
+	timerMinSec: {
+		paddingTop: 5,
+		paddingBottom: 10,
+		color: "#ffffff",
+		fontSize: 25,
+   		backgroundColor: '#0B3049'
+	},
+	button_container: {
+		marginTop: 10,
+		width: 125,
+		borderRadius: 7,
+		backgroundColor: '#DA5D5D'
 	}
 });

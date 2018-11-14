@@ -4,7 +4,7 @@ import moment from "moment";
 import Challenge from "./Challenge.js";
 
 export default class Home extends React.Component {
-	static navigationOptions = { title: "Home" };
+	static navigationOptions = { title: "Progress" };
 	
 	constructor(props) {
 		super(props);
@@ -22,7 +22,7 @@ export default class Home extends React.Component {
 	};
 
 	addNewChallange = () => {
-		AlertIOS.prompt("Hello Fam", null, text => 
+		AlertIOS.prompt("Hey there! What's a habit you're trying to break?", null, text => 
 			this.loadNewName(text));
 	};
 
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		color: "#A1EDCE",
-		fontSize: 35
+		fontSize: 35,
 	},
 	timer: {
 		color: "#ffffff",

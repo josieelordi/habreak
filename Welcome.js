@@ -19,12 +19,20 @@ export default class Welcome extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Welcome to Habreak</Text>
-        <Text style={styles.text_sub}>Ready to get started?</Text>
+        <View style={styles.subtextContainer}>
+          <Text style={styles.text_sub}>We all carry habits with us. </Text>
+          <Text style={styles.text_sub}>Habreak is here to help you track your </Text>
+          <Text style={styles.text_sub}>progress toward breaking the habits</Text>
+          <Text style={styles.text_sub}>you want to unload. </Text>
+        </View>
+        <Text style={styles.text2}>Ready to get started?</Text>
+        <View style={styles.button_container}>
         <Button
           onPress={() => this.props.navigation.navigate("Home")}
           title="Let's go!"
-          color="#DA5D5D"
+          color="#ffffff"
         />
+        </View>
       </View>
     );
   }
@@ -35,14 +43,31 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#07263B",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+  },
+  subtextContainer: {
+    marginTop: 30,
+    marginBottom: 30,
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
     color: "#A1EDCE",
-    fontSize: 35
+    fontSize: 35,
+  },
+    text2: {
+    color: "#ffffff",
+    fontSize: 30,
   },
   text_sub: {
-    color: "#fff",
-    fontSize: 25
+    color: "#D6DEE3",
+    fontSize: 20,
+    justifyContent: "center",
+  },
+    button_container: {
+    marginTop: 20,
+    width: 125,
+    borderRadius: 7,
+    backgroundColor: '#DA5D5D'
   }
 });

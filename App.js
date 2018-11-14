@@ -21,10 +21,9 @@ const RootStack = createStackNavigator(
 		/* The header config from HomeScreen is now here */
 		navigationOptions: {
 			headerStyle: {
-				backgroundColor: "#07263B"
+				backgroundColor: "#041725"
 			},
 			headerTitleStyle: {
-				fontWeight: "bold",
 				color: "#ffffff",
 				fontSize: 30
 			},
