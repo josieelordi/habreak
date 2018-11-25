@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, AlertIOS } from "react-native";
+import { StyleSheet, Text, View, Button, AlertIOS, AsyncStorage } from "react-native";
 import moment from "moment";
 
 function Timer({ interval }) {
@@ -18,18 +18,7 @@ function Timer({ interval }) {
 
 export default class Challenge extends React.Component {
 
-	start = () => {
-		
-		const now = new Date().getTime();
-		this.setState({
-			start: now,
-			now,
-		});
-		this.timer = setInterval(() => {
-			this.setState({ now: new Date().getTime() });
-		}, 100);
-	};
-
+	
 	constructor(props) {
 		super(props);
 
@@ -41,6 +30,23 @@ export default class Challenge extends React.Component {
 		};
 	}
 
+
+
+	start = () => {
+		
+		const now = new Date().getTime();
+		this.setState({
+			start: now,
+			now,
+		});
+		this.timer = setInterval(() => {
+			this.setState({ now: new Date().getTime() });
+		}, 100);
+		//console.log("Stuff to save: N" + this.state.name + " T" + now);
+		AsyncStorage.setItem(this.state.name, String(now), (error) => {console.log("ERROR: " + error + "\n");});
+	};
+
+
 buttonClicked = () => {
 
 	if (this.state.count != 0) {
@@ -50,10 +56,18 @@ buttonClicked = () => {
 	this.start()
 	this.state.count = this.state.count + 1;
 }
+
 	render() {
 		const { now, start } = this.state;
 		const timer = now - start;
 		let text = "";
+		console.log("TIMER: " + timer);
+		AsyncStorage.getItem(this.state.name, (error, value) => {this.setState({
+			start: value,
+			now: new Date().getTime()
+		}); 
+		AsyncStorage.getAllKeys( (error, value) => {console.log(value)})
+		console.log("VALUE: " + value);});
 		if (timer == 0) {
 			text = "Start"
 		} else text = "Reset"
@@ -63,8 +77,13 @@ buttonClicked = () => {
 					<Text style={styles.text}>{this.state.name}</Text>
 				</View>
 					<Timer interval={timer} />
-				<View style={styles.button_container}>
-				<Button title={text} color="#ffffff" onPress={this.buttonClicked} style={styles.button} />
+				<View style={styles.buttonRow}>
+					<View style={styles.button_container}>
+						<Button title={text} color="#ffffff" onPress={this.buttonClicked} style={styles.button} />
+					</View>
+					<View style={styles.button_container}>
+						<Button title="Delete" color="#ffffff" onPress={this.buttonClicked} style={styles.button} />
+					</View>
 				</View>
 			</View>
 		);
@@ -72,6 +91,10 @@ buttonClicked = () => {
 }
 
 const styles = StyleSheet.create({
+	buttonRow: {
+    	flexDirection: 'row',
+    	justifyContent: 'space-between'
+	},
 	container: {
 		flex: 2,
 		backgroundColor: "#07263B",

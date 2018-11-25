@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, AlertIOS } from "react-native";
+import { StyleSheet, Text, View, Button, AlertIOS, AsyncStorage } from "react-native";
 import moment from "moment";
 import Challenge from "./Challenge.js";
 
@@ -13,6 +13,10 @@ export default class Home extends React.Component {
 			chalNames : [],
 			numChal: 0
 		};
+
+		AsyncStorage.getAllKeys( (error, value) => { this.setState({
+			chalNames : value })
+		});
 	}
 	loadNewName = (name) => {
 		this.state.chalNames.push(name);
@@ -28,6 +32,7 @@ export default class Home extends React.Component {
 
 
 	render() {
+		//AsyncStorage.clear((error) => {console.log("CLEARED DAT BITCH" + error);});
 		const { now, start } = this.state;
 		const timer = now - start;
 		//console.log(this.state.chalNames);
