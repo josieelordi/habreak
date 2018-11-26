@@ -1,35 +1,33 @@
 import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
-import moment from "moment";
-
-function Timer({ interval }) {
-	const duration = moment.duration(interval);
-	return (
-		<View style={styles.timerContainer}>
-			<Text style={styles.timerDay}>
-				{duration.days()} days
-			</Text>
-			<Text style={styles.timerMinSec}>
-				{duration.minutes()} min,{" "}{duration.seconds()} sec{" "}
-			</Text>
-		</View>
-	);
-}
+import Communications from 'react-native-communications';
 
 export default class Sponsor extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			name: props.name,
+			phoneNumber: props.phoneNumber
 		};
 	}
 
+buttonPress = (number) => {
+	console.log("Why are we here?");
+	Communications.phonecall(number, true);
+};
+
 
 	render() {
-		//console.log(this.state.chalNames);
-		return (
-	
-// sponsor
+		return ( 
+			<View style={styles.container}>
+				<View style={styles.nameContainer}>
+					<Text style={styles.text}>{this.state.name}</Text>
+				</View>
+				<View style={styles.button_container}>
+					<Button title={this.state.phoneNumber} onPress={this.buttonPress.bind(this, this.state.phoneNumber)} />
+				</View>
+			</View>
 		);
 	}
 }
