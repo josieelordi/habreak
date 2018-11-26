@@ -14,16 +14,16 @@ export default class Motivation extends React.Component {
 		super(props);
 
 		this.state = {
-			quotes: ["You can do it!", 
-					"YAAAAAAAAA BUDDY :)", 
-					"You go bb!", 
-					"We love you! Keep going!",
-					"Woooohoooooo",
-					"DANIEL CHANDROSS?!",
-					"Oh hai Mark",
-					"Oh hai doggy",
-					"Weird flex but ok.",
-					"Fuck you, keep going."]
+			quotes: ["I know it feels impossible, but look how far you've come.", 
+					"Your past self would be so proud of you!", 
+					"Keep it up! You got this.", 
+					"Your family and friends must be so happy for you.",
+					"Don't let this one moment trump all of the progress you've made.",
+					"You're so strong.",
+					"You are right where you're supposed to be.",
+					"This does not define you. Keep up the good work!",
+					"You are capable of whatever you put your mind to.",
+					"Your will power does not run out."]
 		};
 	}
 

@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import Communications from 'react-native-communications';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 export default class Sponsor extends React.Component {
 	constructor(props) {
@@ -8,24 +10,42 @@ export default class Sponsor extends React.Component {
 
 		this.state = {
 			name: props.name,
-			phoneNumber: props.phoneNumber
+			phoneNumber: props.phoneNumber,
+			email: props.email
 		};
 	}
 
-buttonPress = (number) => {
-	console.log("Why are we here?");
+sendCall = (number) => {
+	console.log("Launching Phone Call");
 	Communications.phonecall(number, true);
 };
 
+sendMessage = (number) => {
+	console.log("Launching Message");
+	Communications.text(number, "Hey! Can you give me a call when you have a second?");
 
+};
+
+sendEmail = (email) => {
+	console.log("Launching Email");
+	Communications.email(email, null, null, "Need Backup", "Hey. I'm going through a bit of a hard time right now. Would you mind giving me a call when you can?");
+};
 	render() {
 		return ( 
 			<View style={styles.container}>
 				<View style={styles.nameContainer}>
 					<Text style={styles.text}>{this.state.name}</Text>
 				</View>
-				<View style={styles.button_container}>
-					<Button title={this.state.phoneNumber} onPress={this.buttonPress.bind(this, this.state.phoneNumber)} />
+				<View style={styles.buttonsContainer}>
+					<View style={styles.button_container}>
+						<Icon name='phone' size={55} color='white' onPress={this.sendCall.bind(this, this.state.phoneNumber)} />
+						</View>
+						<View style={styles.button_container}>
+						<Icon name="message-text" size={55} color='white' onPress={this.sendMessage.bind(this, this.state.phoneNumber)} />
+						</View>
+						<View style={styles.button_container}>
+						<Icon name="email" size={55} color='white'  onPress={this.sendEmail.bind(this, this.state.email)} />
+					</View>
 				</View>
 			</View>
 		);
@@ -44,15 +64,16 @@ const styles = StyleSheet.create({
 		borderTopLeftRadius: 7,
 		borderTopRightRadius: 7,
 		width: 325,
-		backgroundColor: '#DA5D5D',
+		backgroundColor: '#A3D470',
 	},
-	timerContainer: {
+	buttonsContainer: {
 		justifyContent: "center",
 		alignItems: "center",
 		backgroundColor: '#0B3049', 
 		width: 325,
 		borderBottomRightRadius: 7,
-		borderBottomLeftRadius: 7
+		borderBottomLeftRadius: 7,
+		flexDirection: 'row' 
 	},
 	text: {
 		justifyContent: "center",
@@ -61,24 +82,12 @@ const styles = StyleSheet.create({
 		color: "#ffffff",
 		fontSize: 35,
 	},
-	timerDay: {
-		paddingTop: 10,
-		paddingBottom: 5,
-		color: "#ffffff",
-		fontSize: 48,
-   		backgroundColor: '#0B3049'
-	},
-	timerMinSec: {
-		paddingTop: 5,
-		paddingBottom: 10,
-		color: "#ffffff",
-		fontSize: 25,
-   		backgroundColor: '#0B3049'
-	},
 	button_container: {
+		justifyContent: "center",
+		alignItems: "center",
+		marginRight: 20,
 		marginTop: 10,
-		width: 125,
 		borderRadius: 7,
-		backgroundColor: '#DA5D5D'
+
 	}
 });

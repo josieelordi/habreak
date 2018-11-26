@@ -52,15 +52,16 @@ export default class Home extends React.Component {
 		return (
 	
 			<View style={styles.container}>
-				<Button
-					title="Add New Challange"
-					color="#A1EDCE"
-					onPress={this.addNewChallenge}
-					style = {styles.button}
-				/>
 				{this.state.chalNames.map((chalName) => {
 					return (<Challenge name= {chalName} />)
 				})}
+					<Button
+						title="Add New Challange"
+						color="#A1EDCE"
+						onPress={this.addNewChallenge}
+						style = {styles.button}
+					/>
+
 			</View>
 		);
 	}
@@ -81,9 +82,5 @@ const styles = StyleSheet.create({
 		color: "#ffffff",
 		fontSize: 40
 	},
-	button: {
-        flex: 10,
-        flexDirection: 'column',
-        justifyContent: 'center',
-	}
+
 });

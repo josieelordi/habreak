@@ -5,7 +5,7 @@ import Sponsor from "./Sponsor.js";
 
 export default class SponsorsView extends React.Component {
 	static navigationOptions = {
-		title: "Sponsors",
+		title: "Allies",
 		headerStyle: {
 				backgroundColor: "#041725"
 		}
@@ -21,14 +21,38 @@ export default class SponsorsView extends React.Component {
 		};
 	}
 
-	loadNewSponsor = (number, name) => {
+	loadNewSponsor = (number, name, email) => {
 		console.log(number);
 		console.log(name);
-		this.state.sponsors.push([name, number]);
+		console.log(email);
+		this.state.sponsors.push([name, number, email]);
 		this.state.numSponsor = this.state.numSponsor + 1;
 		console.log(this.state.sponsors);
 
 		this.forceUpdate();
+	};
+
+
+
+	addNewEmail = (number, name) => {
+		AlertIOS.prompt(
+			"What is their email address?",
+			null,
+			  [
+			    {
+			      text: 'Cancel',
+			      onPress: () => console.log('Cancel Pressed'),
+			      style: 'cancel',
+			    },
+			    {
+			      text: 'Add Email',
+			      onPress: text => this.loadNewSponsor(number, name, text),
+			    },
+			  ],
+			  'plain-text',
+			  '',
+			  'email-address'
+		);
 	};
 
 	addNewNumber = (name) => {
@@ -43,9 +67,12 @@ export default class SponsorsView extends React.Component {
 			    },
 			    {
 			      text: 'Add Number',
-			      onPress: text => this.loadNewSponsor(text, name),
+			      onPress: text => this.addNewEmail(text, name),
 			    },
 			  ],
+			  'plain-text',
+			  "",
+			  'numeric'
 		);
 	};
 
@@ -74,15 +101,18 @@ export default class SponsorsView extends React.Component {
 		return (
 	
 			<View style={styles.container}>
-				<Button
-					title="Add New Sponsor"
+
+				{this.state.sponsors.map((sponsor) => {
+					return (<Sponsor name= {sponsor[0]} 
+									 phoneNumber = {sponsor[1]}
+									 email={sponsor[2]}/>)
+				})}
+								<Button
+					title="Add New Ally"
 					color="#A1EDCE"
 					onPress={this.addNewSponsor}
 					style = {styles.button}
 				/>
-				{this.state.sponsors.map((sponsor) => {
-					return (<Sponsor name= {sponsor[0]} phoneNumber = {sponsor[1]}/>)
-				})}
 			</View>
 		);
 	}
