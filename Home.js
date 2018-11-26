@@ -4,7 +4,12 @@ import moment from "moment";
 import Challenge from "./Challenge.js";
 
 export default class Home extends React.Component {
-	static navigationOptions = { title: "Progress" };
+	static navigationOptions = {
+		title: "Challenges",
+		headerStyle: {
+				backgroundColor: "#041725"
+		}
+	};
 	
 	constructor(props) {
 		super(props);
@@ -21,9 +26,22 @@ export default class Home extends React.Component {
 		this.forceUpdate();
 	};
 
-	addNewChallange = () => {
-		AlertIOS.prompt("Hey there! What's a habit you're trying to break?", null, text => 
-			this.loadNewName(text));
+	addNewChallenge = () => {
+		AlertIOS.prompt(
+			"Hey there! What's a habit you're trying to break?",
+			null,
+			  [
+			    {
+			      text: 'Cancel',
+			      onPress: () => console.log('Cancel Pressed'),
+			      style: 'cancel',
+			    },
+			    {
+			      text: 'Add Habit',
+			      onPress: text => this.loadNewName(text),
+			    },
+			  ],
+		);
 	};
 
 
@@ -32,11 +50,12 @@ export default class Home extends React.Component {
 		const timer = now - start;
 		//console.log(this.state.chalNames);
 		return (
+	
 			<View style={styles.container}>
 				<Button
 					title="Add New Challange"
 					color="#A1EDCE"
-					onPress={this.addNewChallange}
+					onPress={this.addNewChallenge}
 					style = {styles.button}
 				/>
 				{this.state.chalNames.map((chalName) => {

@@ -21,9 +21,8 @@ export default class Welcome extends React.Component {
         <Text style={styles.text}>Welcome to Habreak</Text>
         <View style={styles.subtextContainer}>
           <Text style={styles.text_sub}>We all carry habits with us. </Text>
-          <Text style={styles.text_sub}>Habreak is here to help you track your </Text>
-          <Text style={styles.text_sub}>progress toward breaking the habits</Text>
-          <Text style={styles.text_sub}>you want to unload. </Text>
+          <Text style={styles.text_sub}>Habreak is here to help
+          you track your progress toward breaking the habits you want to unload. </Text>
         </View>
         <Text style={styles.text2}>Ready to get started?</Text>
         <View style={styles.button_container}>
@@ -63,6 +62,7 @@ const styles = StyleSheet.create({
     color: "#D6DEE3",
     fontSize: 20,
     justifyContent: "center",
+    textAlign: "center"
   },
     button_container: {
     marginTop: 20,
