@@ -4,7 +4,7 @@ import moment from "moment";
 
 export default class Motivation extends React.Component {
 	static navigationOptions = {
-		title: "Quotes",
+		title: "Inspiration",
 		headerStyle: {
 				backgroundColor: "#041725"
 		}
@@ -14,36 +14,58 @@ export default class Motivation extends React.Component {
 		super(props);
 
 		this.state = {
-			chalNames : [],
-			numChal: 0
+			quotes: ["You can do it!", 
+					"YAAAAAAAAA BUDDY :)", 
+					"You go bb!", 
+					"We love you! Keep going!",
+					"Woooohoooooo",
+					"DANIEL CHANDROSS?!",
+					"Oh hai Mark",
+					"Oh hai doggy",
+					"Weird flex but ok.",
+					"Fuck you, keep going."]
 		};
 	}
 
+	buttonClicked = () => {
+		this.forceUpdate();
+	}
+
 	render() {
-		const { now, start } = this.state;
-		const timer = now - start;
-		//console.log(this.state.chalNames);
-		return (
+		let quote = this.state.quotes[Math.floor(Math.random()*this.state.quotes.length)];
 	
+		return (
+			
 			<View style={styles.container}>
-				<Text style={styles.helo}>
-				helo
-				</Text>
+				<View style={styles.quote_containter}>
+					<Text style={styles.quote}>{ quote }</Text>
+				</View>
+				<View style={styles.button_container}>
+					<Button title="Another One!" color="#A1EDCE" onPress={this.buttonClicked} />
+				</View>
 			</View>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
+	button_container: {
+		paddingBottom: 70,
+	},
+	quote_container: {
+		paddingTop: 0,
+		backgroundColor: '#0B3049',
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
 	container: {
-	    flex: 1,
+		flex: 1,
 	    backgroundColor: "#07263B",
 	    alignItems: "center",
 	    justifyContent: "center",
 	  },
-	helo: {
-		flex: 1,
+	quote: {
 		color: "white",
-		marginTop: 30
+		fontSize: 40,
 	},
 });

@@ -21,51 +21,15 @@ export default class Sponsor extends React.Component {
 		super(props);
 
 		this.state = {
-			sponsors : [],
-			numSponsors: 0
 		};
 	}
-	addSponsor = (name) => {
-		this.state.sponsors.push(name);
-		this.state.numSponsors = this.state.numSponsors + 1;
-		console.log(this.state.chalNames);
-		this.forceUpdate();
-	};
-
-	addNewSponsor = () => {
-		AlertIOS.prompt(
-			"Hey there! What's a habit you're trying to break?",
-			null,
-			  [
-			    {
-			      text: 'Cancel',
-			      onPress: () => console.log('Cancel Pressed'),
-			      style: 'cancel',
-			    },
-			    {
-			      text: 'Add Sponsor',
-			      onPress: text => this.addSponsor(text),
-			    },
-			  ],
-		);
-	};
 
 
 	render() {
 		//console.log(this.state.chalNames);
 		return (
 	
-			<View style={styles.container}>
-				<Button
-					title="Add New Sponsor"
-					color="#A1EDCE"
-					onPress={this.addNewSponsor}
-					style = {styles.button}
-				/>
-				{this.state.chalNames.map((chalName) => {
-					return (<Challenge name= {chalName} />)
-				})}
-			</View>
+// sponsor
 		);
 	}
 }
