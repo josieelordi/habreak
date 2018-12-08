@@ -102,25 +102,14 @@ export default class SponsorsView extends React.Component {
 
 			<View style={styles.container}>
 			<ScrollView>
-			<Sponsor name="helo"
-							 phoneNumber ="yes"
-							 email="aaa"/>
-			<Sponsor name="helo"
-				 							 phoneNumber ="aaa"
-				 							 email="aaa"/>
-
-			<Sponsor name="helo"
-											 				 phoneNumber ="aaa"
-											 				 email="aaa"/>
-			</ScrollView>
-
-
 				{this.state.sponsors.map((sponsor) => {
 					return (<Sponsor name= {sponsor[0]}
 									 phoneNumber = {sponsor[1]}
 									 email={sponsor[2]}/>)
 				})}
-								<Button
+
+			</ScrollView>
+			<Button
 					title="Add New Ally"
 					color="#A1EDCE"
 					onPress={this.addNewSponsor}
