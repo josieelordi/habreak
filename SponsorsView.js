@@ -127,10 +127,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#07263B",
     alignItems: "center",
     justifyContent: "center",
-	},
-	helo: {
-		flex: 1,
-		color: "white",
-		marginTop: 30
-	},
+	}
 });
