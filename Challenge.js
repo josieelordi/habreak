@@ -19,7 +19,7 @@ function Timer({ interval }) {
 export default class Challenge extends React.Component {
 
 	start = () => {
-		
+
 		const now = new Date().getTime();
 		this.setState({
 			start: now,
@@ -57,7 +57,7 @@ buttonClicked = () => {
 		if (timer == 0) {
 			text = "Start"
 		} else text = "Reset"
-		return ( 
+		return (
 			<View style={styles.container}>
 				<View style={styles.nameContainer}>
 					<Text style={styles.text}>{this.state.name}</Text>
@@ -73,23 +73,23 @@ buttonClicked = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 2,
 		backgroundColor: "#07263B",
 		alignItems: "center",
 		justifyContent: "center",
-		height: 10
+		height: 200,
+		margin: 4
 	},
 	nameContainer:{
 		borderTopLeftRadius: 7,
 		borderTopRightRadius: 7,
-		width: 325,
+		width: 300,
 		backgroundColor: '#DA5D5D',
 	},
 	timerContainer: {
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor: '#0B3049', 
-		width: 325,
+		backgroundColor: '#0B3049',
+		width: 300,
 		borderBottomRightRadius: 7,
 		borderBottomLeftRadius: 7
 	},

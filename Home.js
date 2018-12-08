@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, AlertIOS } from "react-native";
+import { StyleSheet, Text,ScrollView, View, Button, AlertIOS } from "react-native";
 import moment from "moment";
 import Challenge from "./Challenge.js";
 
@@ -10,7 +10,7 @@ export default class Home extends React.Component {
 				backgroundColor: "#041725"
 		}
 	};
-	
+
 	constructor(props) {
 		super(props);
 
@@ -50,27 +50,42 @@ export default class Home extends React.Component {
 		const timer = now - start;
 		//console.log(this.state.chalNames);
 		return (
-	
-			<View style={styles.container}>
-				{this.state.chalNames.map((chalName) => {
-					return (<Challenge name= {chalName} />)
-				})}
+
+				<View style={styles.container}>
+				<View style={styles.button}>
+
 					<Button
-						title="Add New Challange"
+						title="Add New Challenge"
 						color="#A1EDCE"
 						onPress={this.addNewChallenge}
-						style = {styles.button}
 					/>
+					</View>
 
-			</View>
+					<ScrollView
+						stylesContainer={styles.scroll}
+						horizontal={false}>
+
+					<Challenge name="george" />
+					{this.state.chalNames.map((chalName) => {
+						return (<Challenge name= {chalName} />)
+					})}
+					</ScrollView>
+
+				</View>
 		);
 	}
 }
+
+
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: "#07263B",
+		alignItems: "center",
+		justifyContent: "center"
+	},
+	scroll:{
 		alignItems: "center",
 		justifyContent: "center"
 	},
@@ -82,5 +97,8 @@ const styles = StyleSheet.create({
 		color: "#ffffff",
 		fontSize: 40
 	},
+	button: {
+    marginTop: 20
+  }
 
 });
