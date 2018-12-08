@@ -6,6 +6,7 @@ import Home from "./Home.js";
 import Welcome from "./Welcome.js";
 import Motivation from "./Motivation.js";
 import SponsorsView from "./SponsorsView.js";
+import AwardsView from "./AwardsView.js";
 
 // const App = createStackNavigator({
 // 	Welcome: { screen: Welcome },
@@ -18,7 +19,8 @@ const Habreak = createBottomTabNavigator(
     Welcome: Welcome,
     Challenges: Home,
     Motivation: Motivation,
-    Sponsors: SponsorsView
+    Sponsors: SponsorsView,
+    Awards: AwardsView
 
   },
   {
@@ -34,7 +36,10 @@ const Habreak = createBottomTabNavigator(
           iconName = `ios-happy${focused ? '' : '-outline'}`;
         } else if (routeName === 'Sponsors') {
           iconName = `ios-contacts${focused ? '' : '-outline'}`;
+        } else if (routeName === 'Awards') {
+          iconName = `ios-trophy${focused ? '' : '-outline'}`;
         }
+
 
         // You can return any component that you like here! We usually use an
         // icon component from react-native-vector-icons
@@ -46,7 +51,8 @@ const Habreak = createBottomTabNavigator(
       inactiveTintColor: '#fff',
       style: {
       	backgroundColor: '#000000'
-      }
+      },
+      scrollEnabled: true
     },
   }
 )
