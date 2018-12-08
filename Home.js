@@ -65,7 +65,6 @@ export default class Home extends React.Component {
 						stylesContainer={styles.scroll}
 						horizontal={false}>
 
-					<Challenge name="george" />
 					{this.state.chalNames.map((chalName) => {
 						return (<Challenge name= {chalName} />)
 					})}
