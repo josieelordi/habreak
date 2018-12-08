@@ -12,8 +12,8 @@ export default class Award extends React.Component {
 
 		this.state = {
 			name: props.name,
-			phoneNumber: props.phoneNumber,
-			email: props.email
+			progress: props.progress,
+			completed: false
 		};
 	}
 
@@ -36,40 +36,10 @@ sendCall = (number) => {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 2,
-		backgroundColor: "#07263B",
-		alignItems: "center",
-		justifyContent: "center",
-		height: 10
+		backgroundColor: "#0080FF",
+		height: 70,
+		width: 70,
+		borderRadius: 100,
+		margin: 10
 	},
-	nameContainer:{
-		borderTopLeftRadius: 7,
-		borderTopRightRadius: 7,
-		width: 300,
-		backgroundColor: '#A3D470',
-	},
-	buttonsContainer: {
-		justifyContent: "center",
-		alignItems: "center",
-		backgroundColor: '#0B3049',
-		width: 300,
-		borderBottomRightRadius: 7,
-		borderBottomLeftRadius: 7,
-		flexDirection: 'row'
-	},
-	text: {
-		justifyContent: "center",
-		alignItems: "center",
-		marginLeft: 10,
-		color: "#ffffff",
-		fontSize: 35,
-	},
-	button_container: {
-		justifyContent: "center",
-		alignItems: "center",
-		marginRight: 20,
-		marginTop: 10,
-		borderRadius: 7,
-
-	}
 });

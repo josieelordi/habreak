@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, AlertIOS } from "react-native";
+import { StyleSheet, Text, View, Button, AlertIOS, ScrollView } from "react-native";
 import moment from "moment";
 import Award from "./Award.js";
 
@@ -101,8 +101,32 @@ export default class AwardsView extends React.Component {
 		return (
 
 			<View style={styles.container}>
+				<Text
+					style={styles.awards_title}
+				>
+				Awards
+				</Text>
+				<ScrollView>
+				<View style={styles.awards_container}>
 
-				<Award/>
+					<Text style={styles.award_margin}>
+					<Award/>
+					</Text>
+					<Text style={styles.award_margin}>
+					<Award/>
+					</Text>
+					<Text style={styles.award_margin}>
+					<Award/>
+					</Text>
+					<Text style={styles.award_margin}>
+					<Award/>
+					</Text>
+					<Text style={styles.award_margin}>
+					<Award/>
+					</Text>
+				</View>
+				</ScrollView>
+
 			</View>
 		);
 	}
@@ -110,14 +134,24 @@ export default class AwardsView extends React.Component {
 
 const styles = StyleSheet.create({
 	container: {
-	    flex: 1,
-	    backgroundColor: "#07263B",
-	    alignItems: "center",
-	    justifyContent: "center",
-	  },
-	helo: {
+		paddingTop: 20,
+    flex: 1,
+    backgroundColor: "#07263B",
+    alignItems: "center",
+	},
+	award_margin: {
+		margin: 5
+	},
+
+	awards_container: {
 		flex: 1,
 		color: "white",
-		marginTop: 30
+		marginTop: 30,
+		flexDirection: "row",
+		flexWrap: "wrap"
 	},
+	awards_title: {
+		fontSize: 40,
+		color: "white"
+	}
 });
