@@ -31,7 +31,7 @@ sendEmail = (email) => {
 	Communications.email(email, null, null, "Need Backup", "Hey. I'm going through a bit of a hard time right now. Would you mind giving me a call when you can?");
 };
 	render() {
-		return ( 
+		return (
 			<View style={styles.container}>
 				<View style={styles.nameContainer}>
 					<Text style={styles.text}>{this.state.name}</Text>
@@ -54,26 +54,26 @@ sendEmail = (email) => {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 2,
+		margin: 5,
 		backgroundColor: "#07263B",
 		alignItems: "center",
 		justifyContent: "center",
-		height: 10
+		height: 110
 	},
 	nameContainer:{
 		borderTopLeftRadius: 7,
 		borderTopRightRadius: 7,
-		width: 325,
+		width: 300,
 		backgroundColor: '#A3D470',
 	},
 	buttonsContainer: {
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor: '#0B3049', 
-		width: 325,
+		backgroundColor: '#0B3049',
+		width: 300,
 		borderBottomRightRadius: 7,
 		borderBottomLeftRadius: 7,
-		flexDirection: 'row' 
+		flexDirection: 'row'
 	},
 	text: {
 		justifyContent: "center",

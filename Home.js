@@ -53,12 +53,6 @@ export default class Home extends React.Component {
 
 				<View style={styles.container}>
 				<View style={styles.button}>
-
-					<Button
-						title="Add New Challenge"
-						color="#A1EDCE"
-						onPress={this.addNewChallenge}
-					/>
 					</View>
 
 					<ScrollView
@@ -69,6 +63,11 @@ export default class Home extends React.Component {
 						return (<Challenge name= {chalName} />)
 					})}
 					</ScrollView>
+					<Button
+						title="Add New Challenge"
+						color="#A1EDCE"
+						onPress={this.addNewChallenge}
+					/>
 
 				</View>
 		);

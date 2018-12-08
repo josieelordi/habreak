@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, AlertIOS } from "react-native";
+import { StyleSheet, Text, View, Button, AlertIOS, ScrollView } from "react-native";
 import moment from "moment";
 import Sponsor from "./Sponsor.js";
 
@@ -10,7 +10,7 @@ export default class SponsorsView extends React.Component {
 				backgroundColor: "#041725"
 		}
 	};
-	
+
 	constructor(props) {
 		super(props);
 
@@ -96,14 +96,27 @@ export default class SponsorsView extends React.Component {
 
 
 	render() {
-		
+
 		//console.log(this.state.chalNames);
 		return (
-	
+
 			<View style={styles.container}>
+			<ScrollView>
+			<Sponsor name="helo"
+							 phoneNumber ="yes"
+							 email="aaa"/>
+			<Sponsor name="helo"
+				 							 phoneNumber ="aaa"
+				 							 email="aaa"/>
+
+			<Sponsor name="helo"
+											 				 phoneNumber ="aaa"
+											 				 email="aaa"/>
+			</ScrollView>
+
 
 				{this.state.sponsors.map((sponsor) => {
-					return (<Sponsor name= {sponsor[0]} 
+					return (<Sponsor name= {sponsor[0]}
 									 phoneNumber = {sponsor[1]}
 									 email={sponsor[2]}/>)
 				})}
@@ -120,11 +133,12 @@ export default class SponsorsView extends React.Component {
 
 const styles = StyleSheet.create({
 	container: {
-	    flex: 1,
-	    backgroundColor: "#07263B",
-	    alignItems: "center",
-	    justifyContent: "center",
-	  },
+		paddingTop: 20,
+    flex: 1,
+    backgroundColor: "#07263B",
+    alignItems: "center",
+    justifyContent: "center",
+	},
 	helo: {
 		flex: 1,
 		color: "white",

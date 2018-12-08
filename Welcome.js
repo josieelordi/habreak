@@ -26,11 +26,11 @@ export default class Welcome extends React.Component {
         </View>
         <Text style={styles.text2}>Ready to get started?</Text>
         <View style={styles.button_container}>
-          <Button
-            onPress={() => this.props.navigation.navigate("Home")}
-            title="Let's go!"
-            color="#ffffff"
-          />
+        <Button
+          onPress={() => this.props.navigation.navigate("Home")}
+          title="Let's go!"
+          color="#ffffff"
+        />
         </View>
       </View>
     );
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     textAlign: "center"
   },
-  button_container: {
+    button_container: {
     marginTop: 20,
     width: 125,
     borderRadius: 7,
