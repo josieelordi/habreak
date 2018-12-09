@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import Communications from 'react-native-communications';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import ProgressCircle from 'react-native-progress-circle';
 
 
 
@@ -13,7 +14,8 @@ export default class Award extends React.Component {
 		this.state = {
 			name: props.name,
 			progress: props.progress,
-			completed: false
+			completed: props.name > 0 ? true : false,
+			desc: props.desc
 		};
 	}
 
@@ -22,24 +24,49 @@ sendCall = (number) => {
 	Communications.phonecall(number, true);
 };
 
+	// render() {
+	// 	return (
+	// 		<View style={styles.container}>
+	// 			<View style={styles.nameContainer}>
+	// 				<Text style={styles.text}>{this.state.name}</Text>
+	// 			</View>
+	//
+	// 		</View>
+	// 	);
+	// }
+
 	render() {
 		return (
 			<View style={styles.container}>
-				<View style={styles.nameContainer}>
-					<Text style={styles.text}>{this.state.name}</Text>
-				</View>
+
+					<ProgressCircle
+						percent={this.state.progress}
+						radius={50}
+						borderWidth={8}
+						color= "#DA5D5D"
+						shadowColor="#D6DEE3"
+						bgColor="#07263B"
+					>
+							<Text style={{fontSize: 18, color: "white"}}>{this.state.progress + "%"}</Text>
+					</ProgressCircle>
+
+						<Text style={{fontSize: 24, color: "white"}}>{this.state.name}</Text>
+						<Text style={{fontSize: 12, color: "white"}}>{this.state.desc}</Text>
+
+
 
 			</View>
 		);
 	}
 }
-
+// https://github.com/facebook/react-native/issues/1438
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: "#0080FF",
-		height: 70,
-		width: 70,
-		borderRadius: 100,
-		margin: 10
+		justifyContent: "center",
+		alignItems: "center",
+		margin: 14
 	},
+	about_award: {
+
+	}
 });

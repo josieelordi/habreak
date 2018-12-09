@@ -3711,6 +3711,11 @@ react-native-maps@0.21.0:
     babel-plugin-module-resolver "^2.3.0"
     babel-preset-react-native "1.9.0"
 
+react-native-progress-circle@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-progress-circle/-/react-native-progress-circle-2.0.1.tgz#6a034bef69a13c3b7f1a33722527046d088c233d"
+  integrity sha512-Cb2bBJ+m4DIcUnv7zaRvhMuaZAb1cWrd0UUMFJz/F7Z5yMga3A7SrQGDhtUrcpBju4peyqtUMoQG8dOFEuCVog==
+
 react-native-reanimated@1.0.0-alpha.6:
   version "1.0.0-alpha.6"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.0.0-alpha.6.tgz#169d23b3b39d1c88e509ddc97027b1c8cc066da8"

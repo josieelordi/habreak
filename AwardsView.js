@@ -107,23 +107,37 @@ export default class AwardsView extends React.Component {
 				Awards
 				</Text>
 				<ScrollView>
-				<View style={styles.awards_container}>
+					<View style={styles.awards_container}>
+					<Award
+						progress={5}
+						name="aaaa"
+						desc="bbbbbbbb"
 
-					<Text style={styles.award_margin}>
-					<Award/>
-					</Text>
-					<Text style={styles.award_margin}>
-					<Award/>
-					</Text>
-					<Text style={styles.award_margin}>
-					<Award/>
-					</Text>
-					<Text style={styles.award_margin}>
-					<Award/>
-					</Text>
-					<Text style={styles.award_margin}>
-					<Award/>
-					</Text>
+					/>
+					<Award
+						progress={10}
+						name="aaaa"
+						desc="bbbbbbbb"
+
+					/>
+					<Award
+						progress={50}
+						name="aaaa"
+						desc="bbbbbbbb"
+
+					/>
+					<Award
+						progress={76}
+						name="aaaa"
+						desc="this is a sentence with words!!"
+
+					/>
+					<Award
+						progress={0}
+						name="aaaa"
+						desc="Bacon ipsum dolor amet pork belly jerky prosciutto, drumstick tenderloin t-bone biltong filet mignon corned beef flank boudin tongue pastrami sausage beef ribs. Turducken pig capicola, strip steak chuck beef ribs chicken pork chop rump flank ball tip t-bone ham ground round sirloin. "
+
+					/>
 				</View>
 				</ScrollView>
 
@@ -138,6 +152,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#07263B",
     alignItems: "center",
+
 	},
 	award_margin: {
 		margin: 5
@@ -145,10 +160,10 @@ const styles = StyleSheet.create({
 
 	awards_container: {
 		flex: 1,
-		color: "white",
 		marginTop: 30,
-		flexDirection: "row",
-		flexWrap: "wrap"
+		flexDirection: "column",
+		justifyContent: "center",
+		alignItems: "center"
 	},
 	awards_title: {
 		fontSize: 40,
