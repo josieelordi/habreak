@@ -20,10 +20,24 @@ export default class Home extends React.Component {
 		};
 	}
 	loadNewName = (name) => {
+		//TODO: error checking goes here
+
 		this.state.chalNames.push(name);
 		this.state.numChal = this.state.numChal + 1;
 		console.log(this.state.chalNames);
 		this.forceUpdate();
+	};
+
+	removeChallengeName = (name) => {
+		console.log(name);
+		console.log("removeChallengeName");
+
+		//TODO: the rest of the function!!
+
+		// this.state.chalNames.push(name);
+		// this.state.numChal = this.state.numChal + 1;
+		// console.log(this.state.chalNames);
+		// this.forceUpdate();
 	};
 
 	addNewChallenge = () => {
@@ -60,7 +74,9 @@ export default class Home extends React.Component {
 						horizontal={false}>
 
 					{this.state.chalNames.map((chalName) => {
-						return (<Challenge name= {chalName} />)
+						return (<Challenge
+												name= {chalName}
+												removeChal={this.removeChallengeName}/>)
 					})}
 					</ScrollView>
 					<Button
@@ -81,7 +97,8 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: "#07263B",
 		alignItems: "center",
-		justifyContent: "center"
+		justifyContent: "center",
+		paddingTop: 20
 	},
 	scroll:{
 		alignItems: "center",
@@ -96,7 +113,7 @@ const styles = StyleSheet.create({
 		fontSize: 40
 	},
 	button: {
-    marginTop: 20
+    marginTop: 12
   }
 
 });

@@ -22,6 +22,8 @@ export default class SponsorsView extends React.Component {
 	}
 
 	loadNewSponsor = (number, name, email) => {
+		//TODO: error checking goes here
+
 		console.log(number);
 		console.log(name);
 		console.log(email);
@@ -30,6 +32,20 @@ export default class SponsorsView extends React.Component {
 		console.log(this.state.sponsors);
 
 		this.forceUpdate();
+	};
+
+
+
+	deleteOldSponsor = (number, name, email) => {
+
+		console.log(number, name, email);
+
+		// TODO: make sponsors deletable
+		// this.state.sponsors.push([name, number, email]);
+		// this.state.numSponsor = this.state.numSponsor + 1;
+		// console.log(this.state.sponsors);
+		//
+		// this.forceUpdate();
 	};
 
 
@@ -105,7 +121,8 @@ export default class SponsorsView extends React.Component {
 				{this.state.sponsors.map((sponsor) => {
 					return (<Sponsor name= {sponsor[0]}
 									 phoneNumber = {sponsor[1]}
-									 email={sponsor[2]}/>)
+									 email={sponsor[2]}
+									 deleteSponsor={this.deleteOldSponsor}/>)
 				})}
 
 			</ScrollView>

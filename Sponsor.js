@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, AlertIOS } from "react-native";
 import Communications from 'react-native-communications';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -30,6 +30,27 @@ sendEmail = (email) => {
 	console.log("Launching Email");
 	Communications.email(email, null, null, "Need Backup", "Hey. I'm going through a bit of a hard time right now. Would you mind giving me a call when you can?");
 };
+
+confirmDeleteSponsor = () => {
+	//confirmation of some sort
+	AlertIOS.prompt(
+		"Delete Challenge",
+		"Are you sure you want to delete this sponsor?",
+			[
+				{
+					text: 'Cancel',
+					onPress: () => console.log('Cancel Pressed'),
+					style: 'cancel',
+				},
+				{
+					text: 'Yes',
+					onPress: () => this.props.deleteSponsor(this.state.name, this.state.phoneNumber, this.state.email),
+				},
+			],
+			'default'
+	);
+};
+
 	render() {
 		return (
 			<View style={styles.container}>
@@ -39,12 +60,15 @@ sendEmail = (email) => {
 				<View style={styles.buttonsContainer}>
 					<View style={styles.button_container}>
 						<Icon name='phone' size={55} color='white' onPress={this.sendCall.bind(this, this.state.phoneNumber)} />
-						</View>
-						<View style={styles.button_container}>
+					</View>
+					<View style={styles.button_container}>
 						<Icon name="message-text" size={55} color='white' onPress={this.sendMessage.bind(this, this.state.phoneNumber)} />
-						</View>
-						<View style={styles.button_container}>
+					</View>
+					<View style={styles.button_container}>
 						<Icon name="email" size={55} color='white'  onPress={this.sendEmail.bind(this, this.state.email)} />
+					</View>
+					<View style={styles.button_container}>
+						<Icon name="close" size={55} color='#cc2222'  onPress={this.confirmDeleteSponsor} />
 					</View>
 				</View>
 			</View>

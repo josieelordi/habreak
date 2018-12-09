@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Button, AlertIOS } from "react-native";
 import moment from "moment";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function Timer({ interval }) {
 	const duration = moment.duration(interval);
@@ -24,6 +25,7 @@ export default class Challenge extends React.Component {
 		this.setState({
 			start: now,
 			now,
+
 		});
 		this.timer = setInterval(() => {
 			this.setState({ now: new Date().getTime() });
@@ -41,15 +43,40 @@ export default class Challenge extends React.Component {
 		};
 	}
 
-buttonClicked = () => {
 
-	if (this.state.count != 0) {
-		AlertIOS.alert(
- 'That’s okay. You made it pretty far and we know you can do it again!');
+	resetTimer = () => {
+
+		if (this.state.count != 0) {
+			AlertIOS.alert(
+	 'That’s okay. You made it pretty far and we know you can do it again!');
+		}
+		this.start()
+		this.state.count = this.state.count + 1;
 	}
-	this.start()
-	this.state.count = this.state.count + 1;
-}
+
+
+	confirmDeleteChallenge = () => {
+		//confirmation of some sort
+		AlertIOS.prompt(
+			"Delete Challenge",
+			"Are you sure you want to delete this challenge?",
+				[
+					{
+						text: 'Cancel',
+						onPress: () => console.log('Cancel Pressed'),
+						style: 'cancel',
+					},
+					{
+						text: 'Yes',
+						onPress: () => this.props.removeChal(this.state.name),
+					},
+				],
+				'default'
+		);
+	};
+
+
+
 	render() {
 		const { now, start } = this.state;
 		const timer = now - start;
@@ -63,9 +90,14 @@ buttonClicked = () => {
 					<Text style={styles.text}>{this.state.name}</Text>
 				</View>
 					<Timer interval={timer} />
-				<View style={styles.button_container}>
-				<Button title={text} color="#ffffff" onPress={this.buttonClicked} style={styles.button} />
-				</View>
+				<Text>
+					<View style={styles.button_container}>
+						<Button title={text} color="#ffffff" onPress={this.resetTimer} style={styles.button} />
+					</View>
+					<View style={styles.button_container}>
+						<Button title="Delete" color="#ffffff" onPress={this.confirmDeleteChallenge} style={styles.button} />
+					</View>
+				</Text>
 			</View>
 		);
 	}
@@ -116,7 +148,7 @@ const styles = StyleSheet.create({
 	},
 	button_container: {
 		marginTop: 10,
-		width: 125,
+		width: 100,
 		borderRadius: 7,
 		backgroundColor: '#DA5D5D'
 	}

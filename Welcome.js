@@ -12,7 +12,6 @@ import Home from "./Home";
 export default class Welcome extends React.Component {
   static navigationOptions = {
     title: "Welcome"
-    /* No more header config here! */
   };
 
   render() {
