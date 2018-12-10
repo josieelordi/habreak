@@ -9,21 +9,25 @@ export default class Motivation extends React.Component {
 				backgroundColor: "#041725"
 		}
 	};
-	
+
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			quotes: ["I know it feels impossible, but look how far you've come.", 
-					"Your past self would be so proud of you!", 
-					"Keep it up! You got this.", 
-					"Your family and friends must be so happy for you.",
+			quotes: ["I know it feels impossible, but look how far you've come.",
+					"Your past self would be so proud of you!",
+					"Keep it up! You got this.",
+					"Your family and friends are going to be so proud of you.",
 					"Don't let this one moment trump all of the progress you've made.",
 					"You're so strong.",
 					"You are right where you're supposed to be.",
 					"This does not define you. Keep up the good work!",
 					"You are capable of whatever you put your mind to.",
-					"Your will power does not run out."]
+					"Your willpower does not run out.",
+					"Deep breaths. In through the nose, out through the mouth.",
+					"You are a STAR!",
+					"We're going to get through this. Together!",
+				"First say to yourself what you would be; and then do what you have to do."]
 		};
 	}
 
@@ -33,9 +37,9 @@ export default class Motivation extends React.Component {
 
 	render() {
 		let quote = this.state.quotes[Math.floor(Math.random()*this.state.quotes.length)];
-	
+
 		return (
-			
+
 			<View style={styles.container}>
 				<View style={styles.quote_containter}>
 					<Text style={styles.quote}>{ quote }</Text>

@@ -21,11 +21,32 @@ export default class Home extends React.Component {
 	}
 	loadNewName = (name) => {
 		//TODO: error checking goes here
+		hasError = false;
+		if (name.length == 0) {
+			AlertIOS.prompt(
+				"Hey there! What's a habit you're trying to break?",
+				"Please enter a non-empty string",
+					[
+						{
+							text: 'Cancel',
+							onPress: () => console.log('Cancel Pressed'),
+							style: 'cancel',
+						},
+						{
+							text: 'Add Habit',
+							onPress: text => this.loadNewName(text),
+						},
+					],
+			);
+			hasError = true;
+		}
 
-		this.state.chalNames.push(name);
-		this.state.numChal = this.state.numChal + 1;
-		console.log(this.state.chalNames);
-		this.forceUpdate();
+		if (!hasError) {
+			this.state.chalNames.push(name);
+			this.state.numChal = this.state.numChal + 1;
+			console.log(this.state.chalNames);
+			this.forceUpdate();
+		}
 	};
 
 	removeChallengeName = (name) => {
