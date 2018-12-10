@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import moment from "moment";
 import Award from "./Award.js";
+import { AsyncStorage } from "react-native";
 
 export default class AwardsView extends React.Component {
 	static navigationOptions = {
@@ -110,10 +111,11 @@ export default class AwardsView extends React.Component {
 		} else {
 			AlertIOS.alert("You already checked in today! Come back tomorrow!");
 		}
+		console.log(getItem(numSponsor));
+		console.log(getItem(numChal));
 	};
 
 	render() {
-		//console.log(this.state.chalNames);
 		return (
 			<View style={styles.container}>
 				<Text style={styles.awards_title}>Awards</Text>
