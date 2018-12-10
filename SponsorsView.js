@@ -33,8 +33,6 @@ export default class SponsorsView extends React.Component {
 		AsyncStorage.setItem('numSpon', this.state.numSponsor.toString());
 		console.log(this.state.sponsors);
 
-		setItem("numSponsors", this.state.numSponsor);
-
 		this.forceUpdate();
 	};
 
@@ -137,6 +135,7 @@ export default class SponsorsView extends React.Component {
 		return (
 
 			<View style={styles.container}>
+			<Text style={styles.awards_title}>Allies</Text>
 			<ScrollView>
 				{this.state.sponsors.map((sponsor) => {
 					return (<Sponsor name= {sponsor[0]}
@@ -164,5 +163,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#07263B",
     alignItems: "center",
     justifyContent: "center",
-	}
+	},
+	awards_title: {
+		paddingTop: 20,
+		paddingBottom: 10,
+		fontSize: 40,
+		color: "white"
+	},
 });

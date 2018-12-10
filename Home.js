@@ -14,7 +14,8 @@ export default class Home extends React.Component {
 
 	constructor(props) {
 		super(props);
-
+	//IF WE HAVE ISSUES WITH DATABASE RANDOMLY WIPING THIS IS PROBABLY THE ISSUE
+		AsyncStorage.clear()
 		this.state = {
 			chalNames : [],
 			numChal: 0
@@ -83,15 +84,16 @@ export default class Home extends React.Component {
 
 
 	render() {
+		 console.disableYellowBox = true;
 		const { now, start } = this.state;
 		const timer = now - start;
 		console.log(this.state.chalNames);
 		return (
 
 				<View style={styles.container}>
+				<Text style={styles.awards_title}>Challenges</Text>
 				<View style={styles.button}>
 					</View>
-
 					<ScrollView
 						stylesContainer={styles.scroll}
 						horizontal={false}>
@@ -121,6 +123,12 @@ export default class Home extends React.Component {
 
 
 const styles = StyleSheet.create({
+	awards_title: {
+		paddingTop: 20,
+		paddingBottom: 10,
+		fontSize: 40,
+		color: "white"
+	},
 	container: {
 		flex: 1,
 		backgroundColor: "#07263B",

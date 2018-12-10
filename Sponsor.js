@@ -11,7 +11,8 @@ export default class Sponsor extends React.Component {
 		this.state = {
 			name: props.name,
 			phoneNumber: props.phoneNumber,
-			email: props.email
+			email: props.email,
+			deleted: false
 		};
 	}
 
@@ -44,7 +45,13 @@ confirmDeleteSponsor = () => {
 				},
 				{
 					text: 'Yes',
-					onPress: () => this.props.deleteSponsor(this.state.name, this.state.phoneNumber, this.state.email),
+					onPress: () => {
+						this.props.deleteSponsor(this.state.name, this.state.phoneNumber, this.state.email)
+						this.setState((state) => {
+						// Important: read `state` instead of `this.state` when updating.
+						return {deleted: true}
+						});
+					},
 				},
 			],
 			'default'
@@ -52,6 +59,12 @@ confirmDeleteSponsor = () => {
 };
 
 	render() {
+
+		if (this.state.deleted) {
+			this.state.deleted = true;
+			return(null);
+		} else {
+			this.state.deleted = false;
 		return (
 			<View style={styles.container}>
 				<View style={styles.nameContainer}>
@@ -74,6 +87,7 @@ confirmDeleteSponsor = () => {
 			</View>
 		);
 	}
+	}
 }
 
 const styles = StyleSheet.create({
@@ -82,7 +96,8 @@ const styles = StyleSheet.create({
 		backgroundColor: "#07263B",
 		alignItems: "center",
 		justifyContent: "center",
-		height: 110
+		height: 110,
+		paddingTop: 20,
 	},
 	nameContainer:{
 		borderTopLeftRadius: 7,

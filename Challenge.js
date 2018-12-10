@@ -105,11 +105,13 @@ export default class Challenge extends React.Component {
 					</View>
 						<Timer interval={timer} />
 					<Text>
+						<View style={styles.button_row}>
 						<View style={styles.button_container}>
 							<Button title={text} color="#ffffff" onPress={this.resetTimer} style={styles.button} />
 						</View>
 						<View style={styles.button_container}>
 							<Button title="Delete" color="#ffffff" onPress={this.confirmDeleteChallenge} style={styles.button} />
+						</View>
 						</View>
 					</Text>
 				</View>
@@ -125,7 +127,8 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 		height: 220,
-		margin: 4
+		margin: 4,
+		paddingTop: 10,
 	},
 	nameContainer:{
 		borderTopLeftRadius: 7,
@@ -138,6 +141,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		backgroundColor: '#0B3049',
 		width: 300,
+		paddingBottom: 10,
 		borderBottomRightRadius: 7,
 		borderBottomLeftRadius: 7
 	},
@@ -162,8 +166,13 @@ const styles = StyleSheet.create({
 		fontSize: 25,
    		backgroundColor: '#0B3049'
 	},
+	button_row: {
+		justifyContent: 'space-between',
+		marginLeft: 10,
+		marginRight: 10,
+		 flexDirection: 'row',
+	},
 	button_container: {
-		marginTop: 10,
 		width: 100,
 		borderRadius: 7,
 		backgroundColor: '#DA5D5D'

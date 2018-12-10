@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import Communications from 'react-native-communications';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ProgressCircle from 'react-native-progress-circle';
-
+import { AsyncStorage } from "react-native";
 
 
 
@@ -15,10 +15,16 @@ export default class Award extends React.Component {
 			name: props.name,
 			progress: props.progress,
 			completed: props.name > 0 ? true : false,
-			desc: props.desc
+			desc: props.desc,
+			id: props.id
 		};
+		setInterval(this.update, 1000);
 	}
 
+
+update = () => {
+	AsyncStorage.getItem("AWARDS_" + this.state.id, function (error, result) {
+		this.setState({progress: result})}.bind(this));}
 sendCall = (number) => {
 	console.log("Launching Phone Call");
 	Communications.phonecall(number, true);

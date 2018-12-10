@@ -27,7 +27,7 @@ export default class Motivation extends React.Component {
 					"Deep breaths. In through the nose, out through the mouth.",
 					"You are a STAR!",
 					"We're going to get through this. Together!",
-				"First say to yourself what you would be; and then do what you have to do."]
+					"First say to yourself what you would be; and then do what you have to do."]
 		};
 	}
 
@@ -39,7 +39,6 @@ export default class Motivation extends React.Component {
 		let quote = this.state.quotes[Math.floor(Math.random()*this.state.quotes.length)];
 
 		return (
-
 			<View style={styles.container}>
 				<View style={styles.quote_containter}>
 					<Text style={styles.quote}>{ quote }</Text>
