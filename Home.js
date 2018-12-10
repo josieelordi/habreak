@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text,ScrollView, View, Button, AlertIOS } from "react-native";
 import moment from "moment";
 import Challenge from "./Challenge.js";
+import {AsyncStorage} from "react-native";
 
 export default class Home extends React.Component {
 	static navigationOptions = {
@@ -44,6 +45,8 @@ export default class Home extends React.Component {
 		if (!hasError) {
 			this.state.chalNames.push(name);
 			this.state.numChal = this.state.numChal + 1;
+			console.log ("num Chals : " + this.state.numChal);
+			AsyncStorage.setItem('numChal', this.state.numChal.toString());
 			console.log(this.state.chalNames);
 			this.forceUpdate();
 		}
@@ -54,7 +57,7 @@ export default class Home extends React.Component {
 		console.log("removeChallengeName");
 
 		//const filteredArray = chalNames.filter(item => item != name);
-		this.setState({chalNames: this.state.chalNames.filter((n) => n !== name) });
+		// this.setState({chalNames: this.state.chalNames.filter((n) => n !== name) });
 		//this.state.chalNames.splice(this.state.chalNames.indexOf(name), 1);
 		this.state.numChal = this.state.numChal - 1;
 		console.log(this.state.chalNames);

@@ -39,7 +39,8 @@ export default class Challenge extends React.Component {
 			start: 0,
 			now: 0,
 			name : props.name,
-			count: 0
+			count: 0,
+			deleted: false
 		};
 	}
 
@@ -68,7 +69,13 @@ export default class Challenge extends React.Component {
 					},
 					{
 						text: 'Yes',
-						onPress: () => this.props.removeChal(this.state.name),
+						onPress: () => {
+							this.props.removeChal(this.state.name)
+							this.setState((state) => {
+							  // Important: read `state` instead of `this.state` when updating.
+							  return {deleted: true}
+							});
+						},
 					},
 				],
 				'default'
@@ -84,23 +91,31 @@ export default class Challenge extends React.Component {
 		if (timer == 0) {
 			text = "Start"
 		} else text = "Reset"
-		console.log("Rendering from Challenge: " + this.state.name);
-		return (
-			<View style={styles.container}>
-				<View style={styles.nameContainer}>
-					<Text style={styles.text}>{this.state.name}</Text>
+		console.log("Rendering from Challenge: " + this.state.name + "|" + this.state.deleted);
+
+		if (this.state.deleted) {
+			this.state.deleted = true;
+			return(null);
+		} else {
+			this.state.deleted = false;
+			return (
+				<View style={styles.container}>
+					<View style={styles.nameContainer}>
+						<Text style={styles.text}>{this.state.name}</Text>
+					</View>
+						<Timer interval={timer} />
+					<Text>
+						<View style={styles.button_container}>
+							<Button title={text} color="#ffffff" onPress={this.resetTimer} style={styles.button} />
+						</View>
+						<View style={styles.button_container}>
+							<Button title="Delete" color="#ffffff" onPress={this.confirmDeleteChallenge} style={styles.button} />
+						</View>
+					</Text>
 				</View>
-					<Timer interval={timer} />
-				<Text>
-					<View style={styles.button_container}>
-						<Button title={text} color="#ffffff" onPress={this.resetTimer} style={styles.button} />
-					</View>
-					<View style={styles.button_container}>
-						<Button title="Delete" color="#ffffff" onPress={this.confirmDeleteChallenge} style={styles.button} />
-					</View>
-				</Text>
-			</View>
-		);
+			);
+		}
+
 	}
 }
 

@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import moment from "moment";
 import Award from "./Award.js";
+import {AsyncStorage} from "react-native";
+
 
 export default class AwardsView extends React.Component {
 	static navigationOptions = {
@@ -26,7 +28,10 @@ export default class AwardsView extends React.Component {
 			awardNumbers: [],
 			numAward: 0,
 			streak: 0,
-			streak_button_since: 0
+			streak_button_since: 0,
+			numChal: 0,
+			numSpon: 0,
+			awardVals: [0,0,0,0,0,0,0]
 		};
 	}
 
@@ -101,6 +106,33 @@ export default class AwardsView extends React.Component {
 		);
 	};
 
+	update = () => {
+		AsyncStorage.getItem("numChal", function (error, result) {this.setState({numChal: result})}.bind(this));
+		AsyncStorage.getItem("numSpon", function (error, result) {this.setState({numSpon: result})}.bind(this));
+		// console.log("NUMCHAL: " + this.state.numChal);
+		// console.log("NUMSPON: " + this.state.numSpon);
+
+		if (this.state.streak >= 1){
+			this.state.awardVals[0] = 100;
+		}
+		if (this.state.numSpon >= 1){
+			this.state.awardVals[1] = 100;
+		}
+		if (this.state.numChal >= 1){
+			this.state.awardVals[2] = 100;
+		}
+		if (this.state.numChal >= 1 && this.state.numChal <= 3){
+			this.state.awardVals[3] = 100 * (this.state.numChal / 3);
+		}
+		if (this.state.numSpon >= 1 && this.state.numSpon <= 3){
+			this.state.awardVals[4] = 100 * (this.state.numSpon / 3);
+		}
+		if (this.state.streak >= 1 && this.state.streak <= 7){
+			this.state.awardVals[5] = 100 * (this.state.streak / 7);
+		}
+		this.forceUpdate();
+	}
+
 	checkIn = () => {
 		if (this.state.streak_button_since != moment().format("MMM Do YY")) {
 			this.setState({
@@ -110,104 +142,59 @@ export default class AwardsView extends React.Component {
 		} else {
 			AlertIOS.alert("You already checked in today! Come back tomorrow!");
 		}
+
 	};
 
 	render() {
-		//console.log(this.state.chalNames);
+		console.log(this.state.awardVals);
+		setInterval(this.update, 500);
+		//let award1Val = 0;
+		// if (this.state.streak >= 1){
+		// 	let award1Val = 100;
+		// }
 		return (
 			<View style={styles.container}>
 				<Text style={styles.awards_title}>Awards</Text>
 				<ScrollView>
-<<<<<<< HEAD
 					<Button title="Check In!" onPress={this.checkIn} color="#DA5D5D" />
 					<Text style={styles.streak_text}> Your current streak: {this.state.streak} </Text>
 					<View style={styles.awards_container}>
 					<Award
-						progress={100}
+						progress={this.state.awardVals[0]}
 						name="Got started!"
 						desc="Check in once (and then hopefully again)!"
 					/>
 					<Award
-						progress={100}
+						progress={this.state.awardVals[1]}
 						name="I Got Your Back!"
 						desc="Add an ally."
 					/>
 					<Award
-						progress={100}
+						progress={this.state.awardVals[2]}
 						name="You're On Your Way!"
 						desc="Add a challenge."
 					/>
 					<Award
-						progress={33}
+						progress={this.state.awardVals[3]}
 						name="Goals on goals!"
 						desc="Add at least 3 challenges."
 					/>
 					<Award
-						progress={33}
+						progress={this.state.awardVals[4]}
 						name="We Got Your Back!"
 						desc="Add at least 3 allies."
 					/>
 					<Award
-						progress={14}
+						progress={this.state.awardVals[5]}
 						name="A Week At a Time."
 						desc="Check in for seven days in a row."
 					/>
 					<Award
 						progress={0}
 						name="You're Your Competition!"
-						desc="Beat your longest check-in streak! (Current streak: 3)"
+						desc="Beat your longest check-in streak!"
 					/>
 				</View>
-=======
-					<Button
-						title="Check In!"
-						onPress={this.checkIn}
-						color="#DA5D5D"
-					/>
-					<View style={styles.test}>
-						<Text style={styles.streak_text}>
-							{" "}
-							Your current streak: {this.state.streak}{" "}
-						</Text>
-					</View>
-					<View style={styles.awards_container}>
-						<Award
-							progress={100}
-							name="Got started!"
-							desc="Check in once (and then hopefully again)!"
-						/>
-						<Award
-							progress={100}
-							name="I Got Your Back!"
-							desc="Add an ally."
-						/>
-						<Award
-							progress={100}
-							name="You're On Your Way!"
-							desc="Add a challenge."
-						/>
-						<Award
-							progress={35}
-							name="Goals on goals!"
-							desc="Add at least 3 challenges."
-						/>
-						<Award
-							progress={35}
-							name="We Got Your Back!"
-							desc="Add at least 3 allies."
-						/>
-						<Award
-							progress={15}
-							name="A Week At a Time."
-							desc="Check in for seven days in a row."
-						/>
-						<Award
-							progress={0}
-							name="You're Your Competition!"
-							desc="Beat your longest check-in streak!"
-						/>
-					</View>
->>>>>>> 6b3099924ac6158057557906410c904d469c27eb
 				</ScrollView>
 			</View>
 		);
