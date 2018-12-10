@@ -2,7 +2,11 @@ import React from "react";
 import { StyleSheet, Text, View, Button, AlertIOS, ScrollView } from "react-native";
 import moment from "moment";
 import Sponsor from "./Sponsor.js";
+<<<<<<< HEAD
 import {AsyncStorage} from "react-native";
+=======
+import { AsyncStorage } from "react-native";
+>>>>>>> a32c5a5e5997f9b72d0ce5b58a565ba015d149bc
 
 export default class SponsorsView extends React.Component {
 	static navigationOptions = {
@@ -33,6 +37,8 @@ export default class SponsorsView extends React.Component {
 		AsyncStorage.setItem('numSpon', this.state.numSponsor.toString());
 		console.log(this.state.sponsors);
 
+		setItem("numSponsors", this.state.numSponsor);
+		
 		this.forceUpdate();
 	};
 

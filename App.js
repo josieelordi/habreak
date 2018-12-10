@@ -8,11 +8,6 @@ import Motivation from "./Motivation.js";
 import SponsorsView from "./SponsorsView.js";
 import AwardsView from "./AwardsView.js";
 
-// const App = createStackNavigator({
-// 	Welcome: { screen: Welcome },
-// 	Home: { screen: Home }
-// });
-
 
 const Habreak = createBottomTabNavigator(
   {

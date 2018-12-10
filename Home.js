@@ -2,7 +2,11 @@ import React from "react";
 import { StyleSheet, Text,ScrollView, View, Button, AlertIOS } from "react-native";
 import moment from "moment";
 import Challenge from "./Challenge.js";
+<<<<<<< HEAD
 import {AsyncStorage} from "react-native";
+=======
+import { AsyncStorage } from "react-native";
+>>>>>>> a32c5a5e5997f9b72d0ce5b58a565ba015d149bc
 
 export default class Home extends React.Component {
 	static navigationOptions = {
@@ -45,8 +49,7 @@ export default class Home extends React.Component {
 		if (!hasError) {
 			this.state.chalNames.push(name);
 			this.state.numChal = this.state.numChal + 1;
-			console.log ("num Chals : " + this.state.numChal);
-			AsyncStorage.setItem('numChal', this.state.numChal.toString());
+			setItem("numChal", this.state.numChal);
 			console.log(this.state.chalNames);
 			this.forceUpdate();
 		}
@@ -84,7 +87,6 @@ export default class Home extends React.Component {
 
 
 	render() {
-		console.disableYellowBox = true;
 		const { now, start } = this.state;
 		const timer = now - start;
 		console.log(this.state.chalNames);
@@ -106,6 +108,7 @@ export default class Home extends React.Component {
 												name= {chalName}
 												removeChal={this.removeChallengeName}
 												key={index}/>)
+
 					})}
 					</ScrollView>
 					<Button
