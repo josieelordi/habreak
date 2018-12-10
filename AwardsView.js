@@ -9,12 +9,7 @@ import {
 } from "react-native";
 import moment from "moment";
 import Award from "./Award.js";
-<<<<<<< HEAD
-import {AsyncStorage} from "react-native";
-
-=======
 import { AsyncStorage } from "react-native";
->>>>>>> a32c5a5e5997f9b72d0ce5b58a565ba015d149bc
 
 export default class AwardsView extends React.Component {
 	static navigationOptions = {
@@ -146,24 +141,11 @@ export default class AwardsView extends React.Component {
 		} else {
 			AlertIOS.alert("You already checked in today! Come back tomorrow!");
 		}
-<<<<<<< HEAD
-
-	};
-
-	render() {
-		console.log(this.state.awardVals);
-		setInterval(this.update, 500);
-		//let award1Val = 0;
-		// if (this.state.streak >= 1){
-		// 	let award1Val = 100;
-		// }
-=======
 		console.log(getItem(numSponsor));
 		console.log(getItem(numChal));
 	};
 
 	render() {
->>>>>>> a32c5a5e5997f9b72d0ce5b58a565ba015d149bc
 		return (
 			<View style={styles.container}>
 				<Text style={styles.awards_title}>Awards</Text>
