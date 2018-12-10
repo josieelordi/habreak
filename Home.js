@@ -32,12 +32,11 @@ export default class Home extends React.Component {
 		console.log(name);
 		console.log("removeChallengeName");
 
-		//TODO: the rest of the function!!
-
-		// this.state.chalNames.push(name);
-		// this.state.numChal = this.state.numChal + 1;
-		// console.log(this.state.chalNames);
-		// this.forceUpdate();
+		//const filteredArray = chalNames.filter(item => item != name);
+		this.state.chalNames.splice(this.state.chalNames.indexOf(name), 1);
+		this.state.numChal = this.state.numChal - 1;
+		console.log(this.state.chalNames);
+		this.forceUpdate();
 	};
 
 	addNewChallenge = () => {
@@ -60,9 +59,10 @@ export default class Home extends React.Component {
 
 
 	render() {
+		console.disableYellowBox = true;
 		const { now, start } = this.state;
 		const timer = now - start;
-		//console.log(this.state.chalNames);
+		console.log(this.state.chalNames);
 		return (
 
 				<View style={styles.container}>
@@ -74,7 +74,9 @@ export default class Home extends React.Component {
 						horizontal={false}>
 
 					{this.state.chalNames.map((chalName) => {
-						return (<Challenge
+						console.log("Rendering: " + chalName);
+						return (
+							<Challenge
 												name= {chalName}
 												removeChal={this.removeChallengeName}/>)
 					})}

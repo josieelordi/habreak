@@ -16,7 +16,6 @@ import AwardsView from "./AwardsView.js";
 
 const Habreak = createBottomTabNavigator(
   {
-    Welcome: Welcome,
     Challenges: Home,
     Motivation: Motivation,
     Sponsors: SponsorsView,

@@ -84,6 +84,7 @@ export default class Challenge extends React.Component {
 		if (timer == 0) {
 			text = "Start"
 		} else text = "Reset"
+		console.log("Rendering from Challenge: " + this.state.name);
 		return (
 			<View style={styles.container}>
 				<View style={styles.nameContainer}>

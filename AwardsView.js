@@ -109,34 +109,39 @@ export default class AwardsView extends React.Component {
 				<ScrollView>
 					<View style={styles.awards_container}>
 					<Award
-						progress={5}
-						name="aaaa"
-						desc="bbbbbbbb"
-
+						progress={100}
+						name="Got started!"
+						desc="Check in once (and then hopefully again)!"
 					/>
 					<Award
-						progress={10}
-						name="aaaa"
-						desc="bbbbbbbb"
-
+						progress={100}
+						name="I Got Your Back!"
+						desc="Add an ally."
 					/>
 					<Award
-						progress={50}
-						name="aaaa"
-						desc="bbbbbbbb"
-
+						progress={100}
+						name="You're On Your Way!"
+						desc="Add a challenge."
 					/>
 					<Award
-						progress={76}
-						name="aaaa"
-						desc="this is a sentence with words!!"
-
+						progress={35}
+						name="Goals on goals!"
+						desc="Add at least 3 challenges."
+					/>
+					<Award
+						progress={35}
+						name="We Got Your Back!"
+						desc="Add at least 3 allies."
+					/>
+					<Award
+						progress={15}
+						name="A Week At a Time."
+						desc="Check in for seven days in a row."
 					/>
 					<Award
 						progress={0}
-						name="aaaa"
-						desc="Bacon ipsum dolor amet pork belly jerky prosciutto, drumstick tenderloin t-bone biltong filet mignon corned beef flank boudin tongue pastrami sausage beef ribs. Turducken pig capicola, strip steak chuck beef ribs chicken pork chop rump flank ball tip t-bone ham ground round sirloin. "
-
+						name="You're Your Competition!"
+						desc="Beat your longest check-in streak!"
 					/>
 				</View>
 				</ScrollView>
