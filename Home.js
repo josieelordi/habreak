@@ -45,7 +45,7 @@ export default class Home extends React.Component {
 		if (!hasError) {
 			this.state.chalNames.push(name);
 			this.state.numChal = this.state.numChal + 1;
-			setItem("numChal", this.state.numChal);
+			AsyncStorage.setItem("numChal", this.state.numChal.toString());
 			console.log(this.state.chalNames);
 			this.forceUpdate();
 		}
