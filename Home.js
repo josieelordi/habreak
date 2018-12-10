@@ -33,7 +33,8 @@ export default class Home extends React.Component {
 		console.log("removeChallengeName");
 
 		//const filteredArray = chalNames.filter(item => item != name);
-		this.state.chalNames.splice(this.state.chalNames.indexOf(name), 1);
+		this.setState({chalNames: this.state.chalNames.filter((n) => n !== name) });
+		//this.state.chalNames.splice(this.state.chalNames.indexOf(name), 1);
 		this.state.numChal = this.state.numChal - 1;
 		console.log(this.state.chalNames);
 		this.forceUpdate();

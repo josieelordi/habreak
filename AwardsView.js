@@ -17,7 +17,8 @@ export default class AwardsView extends React.Component {
 		this.state = {
 			awards: [],
 			awardNumbers: [],
-			numAward: 0
+			numAward: 0,
+			streak: 0
 		};
 	}
 
@@ -94,6 +95,12 @@ export default class AwardsView extends React.Component {
 		);
 	};
 
+	checkIn = () => {
+		console.log("CHECKING IN!!");
+		this.setState({streak: this.state.streak + 1 });
+
+	}
+
 
 	render() {
 
@@ -107,6 +114,8 @@ export default class AwardsView extends React.Component {
 				Awards
 				</Text>
 				<ScrollView>
+					<Button title="Check In!" onPress={this.checkIn} color="#DA5D5D" />
+					<Text style={styles.streak_text}> Your current streak: {this.state.streak} </Text>
 					<View style={styles.awards_container}>
 					<Award
 						progress={100}
@@ -173,5 +182,10 @@ const styles = StyleSheet.create({
 	awards_title: {
 		fontSize: 40,
 		color: "white"
-	}
+	},
+	streak_text: {
+		color: "white",
+		justifyContent: "center",
+		alignItems: "center"
+	},
 });
