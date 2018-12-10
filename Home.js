@@ -96,11 +96,13 @@ export default class Home extends React.Component {
 						horizontal={false}>
 
 					{this.state.chalNames.map((chalName) => {
+						let index = this.state.chalNames.indexOf(chalName);
 						console.log("Rendering: " + chalName);
 						return (
 							<Challenge
 												name= {chalName}
-												removeChal={this.removeChallengeName}/>)
+												removeChal={this.removeChallengeName}
+												key={index}/>)
 					})}
 					</ScrollView>
 					<Button

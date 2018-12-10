@@ -133,24 +133,24 @@ export default class AwardsView extends React.Component {
 						desc="Add a challenge."
 					/>
 					<Award
-						progress={35}
+						progress={33}
 						name="Goals on goals!"
 						desc="Add at least 3 challenges."
 					/>
 					<Award
-						progress={35}
+						progress={33}
 						name="We Got Your Back!"
 						desc="Add at least 3 allies."
 					/>
 					<Award
-						progress={15}
+						progress={14}
 						name="A Week At a Time."
 						desc="Check in for seven days in a row."
 					/>
 					<Award
 						progress={0}
 						name="You're Your Competition!"
-						desc="Beat your longest check-in streak!"
+						desc="Beat your longest check-in streak! (Current streak: 3)"
 					/>
 				</View>
 				</ScrollView>

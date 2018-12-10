@@ -53,7 +53,7 @@ export default class SponsorsView extends React.Component {
 	addNewEmail = (number, name) => {
 		AlertIOS.prompt(
 			"What is their email address?",
-			null,
+			"Their email address must not be blank.",
 			  [
 			    {
 			      text: 'Cancel',
@@ -62,7 +62,12 @@ export default class SponsorsView extends React.Component {
 			    },
 			    {
 			      text: 'Add Email',
-			      onPress: text => this.loadNewSponsor(number, name, text),
+			      onPress: email => {
+							if (email.length == 0) {
+								return this.addNewEmail(number, name)
+							}
+							return this.loadNewSponsor(number, name, email)
+						},
 			    },
 			  ],
 			  'plain-text',
@@ -74,7 +79,7 @@ export default class SponsorsView extends React.Component {
 	addNewNumber = (name) => {
 		AlertIOS.prompt(
 			"What is their phone number?",
-			null,
+			"Number must not be left blank.",
 			  [
 			    {
 			      text: 'Cancel',
@@ -83,7 +88,13 @@ export default class SponsorsView extends React.Component {
 			    },
 			    {
 			      text: 'Add Number',
-			      onPress: text => this.addNewEmail(text, name),
+			      onPress: number => {
+							if (number.length == 0) {
+								return this.addNewNumber(name)
+							}
+
+							return this.addNewEmail(number, name)
+						},
 			    },
 			  ],
 			  'plain-text',
@@ -95,7 +106,7 @@ export default class SponsorsView extends React.Component {
 	addNewSponsor = () => {
 		AlertIOS.prompt(
 			"Who is someone you can count on to help you break your bad habits?",
-			null,
+			"Their name must not be blank.",
 			  [
 			    {
 			      text: 'Cancel',
@@ -104,7 +115,12 @@ export default class SponsorsView extends React.Component {
 			    },
 			    {
 			      text: 'Add Sponsor',
-			      onPress: text => this.addNewNumber(text),
+			      onPress: number => {
+							if (number.length == 0) {
+								return this.addNewSponsor()
+							}
+							return this.addNewNumber(number)
+						},
 			    },
 			  ],
 		);
